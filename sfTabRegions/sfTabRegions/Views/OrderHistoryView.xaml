@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="sfTabRegions.Views.OrderHistoryView">
+  <ContentView.Content>
+      <Grid>
+          <Frame
+              Padding="0"
+              BorderColor="Black"
+              BackgroundColor="CornflowerBlue">
+              <StackLayout
+                  HeightRequest="200">
+                  <Label 
+                      Text="{Binding OrderTitle}"
+                      TextColor="White"
+                      VerticalOptions="Center"
+                      HorizontalOptions="Center"
+                      LineBreakMode="WordWrap"/>
+              </StackLayout>
+            </Frame>
+          <RelativeLayout
+              HorizontalOptions="CenterAndExpand"
+              VerticalOptions="CenterAndExpand">
+              <StackLayout
+                  IsVisible="{Binding Busy}"
+                  Padding="12">
+                  <ActivityIndicator
+                      Color="Crimson"
+                      VerticalOptions="Center"
+                      Margin="0"
+                      IsRunning="{Binding Busy}"
+                      IsVisible="{Binding Busy}">
+                  </ActivityIndicator>
+              </StackLayout>
+          </RelativeLayout>
+        </Grid>
+  </ContentView.Content>
+</ContentView>

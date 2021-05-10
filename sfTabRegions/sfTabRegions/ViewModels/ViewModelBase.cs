@@ -1,9 +1,5 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace sfTabRegions.ViewModels
 {
@@ -14,9 +10,22 @@ namespace sfTabRegions.ViewModels
         private string _title;
         public string Title
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get => _title;
+            set => SetProperty(ref _title, value);
         }
+
+        private bool _busy;
+        public bool Busy
+        {
+            get => _busy;
+            set
+            {
+                SetProperty(ref _busy, value);
+                RaisePropertyChanged(nameof(CanExecute));
+            }
+        }
+
+        public bool CanExecute => !Busy;
 
         public ViewModelBase(INavigationService navigationService)
         {
@@ -25,7 +34,7 @@ namespace sfTabRegions.ViewModels
 
         public virtual void Initialize(INavigationParameters parameters)
         {
-
+            Busy = true;
         }
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters)

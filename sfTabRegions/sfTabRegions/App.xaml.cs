@@ -1,5 +1,7 @@
 using Prism;
 using Prism.Ioc;
+using sfTabRegions.Services;
+using sfTabRegions.Services.Interfaces;
 using sfTabRegions.ViewModels;
 using sfTabRegions.Views;
 using Xamarin.Essentials.Implementation;
@@ -28,6 +30,15 @@ namespace sfTabRegions
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegionPage, RegionPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegionTabPage, RegionTabPageViewModel>();
+
+            // Business services
+            containerRegistry.Register<IOrderService, OrderService>();
+
+            // Regions
+            containerRegistry.RegisterRegionServices();
+            containerRegistry.RegisterForRegionNavigation<OrderHistoryView, OrderHistoryViewModel>();
         }
     }
 }

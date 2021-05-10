@@ -5,7 +5,17 @@
              Title="{Binding Title}">
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+        <Button
+            Text="Regions In Page" 
+            HeightRequest="40"
+            WidthRequest="200"
+            Command="{Binding RegionInPageCommand}" />
+        <Button
+            Text="Regions In SfTab" 
+            HeightRequest="40"
+            WidthRequest="200"
+            Command="{Binding RegionInTabCommand}" />
+
     </StackLayout>
 
 </ContentPage>
